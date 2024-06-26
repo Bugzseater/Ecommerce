@@ -3,9 +3,12 @@ import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
 import '../styles/Signup.css';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import NavBar from './Nav';
 
 const Signup = () => {
   return (
+    <div>
+      <NavBar/>
     <div className='container'>
       <div className='left'>
         <div className='cont'>
@@ -61,6 +64,7 @@ const Signup = () => {
           />
         </motion.form>
       </div>
+    </div>
     </div>
   );
 }

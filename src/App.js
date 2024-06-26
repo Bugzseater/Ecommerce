@@ -1,3 +1,4 @@
+import Navbar from "./components/Nav";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 
@@ -11,6 +12,7 @@ function App() {
       
       <Router>
       <div className="App">
+        {/* <Navbar/> */}
         <Routes>
           <Route path="/" element={<Signup />} />
           <Route path="/signup" element={<Signup />} />
