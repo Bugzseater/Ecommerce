@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import '../styles/Signup.css';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import NavBar from './Nav';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from './Firebase';
 
 const Signup = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = async(e) =>{
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      window.location.href="/profile";
+      console.log("loging succesfull");
+    } catch (error) {
+      
+    }
+  }
+
   return (
     <div>
       <NavBar/>
@@ -46,6 +63,7 @@ const Signup = () => {
           // transition={{ duration: 0.5 }}
         >
           <motion.form 
+            onSubmit={handleSubmit}
             className='form'
             initial={{ opacity: 0, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -57,6 +75,8 @@ const Signup = () => {
               <motion.input 
                 type="email" 
                 placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 whileFocus={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -68,6 +88,8 @@ const Signup = () => {
               <motion.input 
                 type="password" 
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 whileFocus={{ scale: 1.05 }}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}

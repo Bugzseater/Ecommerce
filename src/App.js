@@ -1,4 +1,5 @@
 import Navbar from "./components/Nav";
+import Profile from "./components/Profile";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Signup />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />       
+          <Route path="/profile" element={<Profile />} />       
         </Routes>
       </div>
       </Router>
